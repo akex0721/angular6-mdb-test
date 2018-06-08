@@ -1,0 +1,128 @@
+<div>
+  <div>
+      <div style="display: flex; justify-content:space-between; align-items:center">
+        <button class="btn btn-primary waves-light" mdbWavesEffect><i class="fa fa-magic mr-1"></i> Add job</button>
+        <!-- <button class="btn btn-default waves-light" mdbWavesEffect>Right <i class="fa fa-magic ml-1"></i></button> -->
+        <nav>
+          <ul class="pagination pg-blue">
+              <!--Arrow left-->
+              <li class="page-item">
+                  <a class="page-link" mdbWavesEffect aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+              </li>
+
+              <!--Numbers-->
+              <li class="page-item active"><a class="page-link" mdbWavesEffect>1</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>4</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>5</a></li>
+
+              <!--Arrow right-->
+              <li class="page-item">
+                  <a class="page-link" mdbWavesEffect aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+      <!--Table-->
+      <table class="table table-hover table-responsive-md table-fixed">
+
+          <!--Table head-->
+          <thead>
+              <tr>
+                  <th></th>
+                  <th>Job name<i class="fa fa-sort ml-1" style="cursor: pointer"></i><i class="fa fa-search ml-1" style="cursor: pointer"></i></th>
+                  <th>Provider name<i class="fa fa-sort ml-1" style="cursor: pointer"></i><i class="fa fa-search ml-1" style="cursor: pointer"></i></th>
+                  <th>Provider staff<i class="fa fa-sort ml-1" style="cursor: pointer"></i><i class="fa fa-search ml-1" style="cursor: pointer"></i></th>
+                  <th>Last modified<i class="fa fa-sort ml-1" style="cursor: pointer"></i></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+              <tr *ngFor="let job of jobs;">
+                  <td class="statusCell" [ngStyle]="{ 'border-left-color': getColor(job.jobScore < job.providerScore ? job.jobScore : job.providerScore) }"></td>
+
+                  <td scope="row">
+                    <a class="itemCell" href="jobs">
+                      <div class="doughnut" [ngStyle]="{ 'border-color': getColor(job.jobScore) }">{{ job.jobScore }}%</div>
+                      <div>{{ job.name }}</div>
+                    </a>
+                  </td>
+
+                  <td>
+                    <a class="itemCell" href="providers">
+                      <div class="doughnut" [ngStyle]="{ 'border-color': getColor(job.providerScore) }">{{ job.providerScore }}%</div>
+                      <div>{{ job.provider }}</div>
+                    </a>
+                  </td>
+
+                  <td>
+                    <div *ngIf="job.staff.length < 3;then content else other_content"></div>
+
+                    <ng-template #content>
+                      <a *ngFor="let s of job.staff;"  class="user_avatar">
+                        <img src="{{s.avatar}}" class="img-fluid rounded-circle z-depth-0" style="height: 35px;">
+                        <span style="padding: 10px;">{{ s.name }}</span>
+                      </a>
+                    </ng-template>
+
+                    <ng-template #other_content>
+                      <a *ngFor="let s of job.staff;" class="users_avatar">
+                        <img src="{{s.avatar}}" class="img-fluid rounded-circle z-depth-0" style="height: 35px; margin: -6px;">
+                      </a>
+                    </ng-template>
+                  </td>
+
+                  <td>{{ job.lastModified | date :'dd/MMM/yyyy hh:mm'}}</td>
+
+                  <td>
+                    <span *ngFor="let t of job.tags;" class="badge badge-primary" style="margin: 10px; padding: 10px;">
+                      {{ t }}
+                    </span>
+                  </td>
+
+                  <td><i class="fa fa-ellipsis-v ml-1" style="color:#4285f4; cursor:pointer; padding: 10px;"></i></td>
+              </tr>
+          </tbody>
+          <!--Table body-->
+
+      </table>
+      <!--Table-->
+      <nav>
+          <ul class="pagination pg-blue">
+              <!--Arrow left-->
+              <li class="page-item">
+                  <a class="page-link" mdbWavesEffect aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+              </li>
+
+              <!--Numbers-->
+              <li class="page-item active"><a class="page-link" mdbWavesEffect>1</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>2</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>4</a></li>
+              <li class="page-item"><a class="page-link" mdbWavesEffect>5</a></li>
+
+              <!--Arrow right-->
+              <li class="page-item">
+                  <a class="page-link" mdbWavesEffect aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+</div>

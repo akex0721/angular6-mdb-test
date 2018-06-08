@@ -1,0 +1,76 @@
+table {
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    padding: 0 8px 8px 0;
+}
+
+tbody tr {
+    margin: 10px;
+    border-left: 5px solid;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    background: white;
+
+    td {
+        vertical-align: middle;
+    }
+}
+
+.doughnut {
+    border: 3px solid #f00;
+    border-radius: 40px;
+    height:40px;
+    width:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doughnut:hover {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.user_avatar {
+    width: 40px;
+
+    img {
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(10, 111, 149, 0.7);
+        opacity: 0.7;
+    }
+}
+
+.users_avatar {
+    width: 40px;
+
+    img {
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(10, 111, 149, 0.7);
+        opacity: 0.7;
+    }
+}
+
+.users_avatar img:first-child {
+    margin: 0px;
+}
+
+.user_avatar:hover {
+
+    img {
+        opacity: 1;
+    }
+}
+
+.itemCell {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemCell:hover {
+    font-size: bold;
+}
+
+.statusCell {
+    padding: 0px 0px;
+    border-left: 5px solid;
+}
